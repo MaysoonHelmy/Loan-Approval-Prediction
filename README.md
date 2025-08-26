@@ -2,15 +2,104 @@
 
 ## Overview
 
-This project develops a machine learning system to predict loan approval status based on applicant information and financial characteristics. The system follows a comprehensive pipeline from data analysis through preprocessing, feature engineering, model development, and evaluation.
+The **Loan Approval Prediction System** is part of the **Self-Paced Elevvo Machine Learning Internship Level 2**.  
 
+This project develops a machine learning pipeline to predict **loan approval status** based on applicant demographics, income, and financial characteristics. Loan approval prediction plays a vital role in the banking and financial sector, enabling institutions to **automate decision-making, reduce default risk, and improve efficiency**.  
 
-##  Folder Structure
+The workflow covers:  
+- **Exploratory Data Analysis (EDA)** to understand dataset patterns.  
+- **Data preprocessing & feature engineering** to clean and transform raw data.  
+- **Feature selection & model development** with Logistic Regression and Decision Tree classifiers.  
+- **Evaluation** using accuracy, precision, recall, and F1-score across different feature sets.  
+
+## Table of Contents
+
+- [Features](#features)  
+- [Technologies Used](#technologies-used)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Data Sources](#data-sources)  
+- [Project Structure](#project-structure)  
+- [Results & Visualizations](#results--visualizations)  
+- [Key Findings](#key-findings)  
+- [Requirements](#requirements)  
+- [Conclusion](#conclusion)  
+
+## Features
+
+- Exploratory Data Analysis (EDA) with visualizations and profiling report  
+- Data preprocessing and feature engineering  
+- Feature selection: **manual**, **SelectKBest**, **Recursive Feature Elimination (RFE)**, and **all features**  
+- Model development with:  
+  - **Logistic Regression**  
+  - **Decision Tree**  
+- Evaluation with cross-validation, accuracy, and classification metrics  
+- Auto-generated HTML EDA report for easy insights  
+
+## Technologies Used
+
+- Python  
+- Jupyter Notebook  
+- Pandas  
+- NumPy  
+- Scikit-learn  
+- Matplotlib  
+- Seaborn  
+- Imbalanced-learn  
+- ydata-profiling  
+
+## Installation
+
+To set up the project locally:  
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/LoanApprovalPrediction.git  
+
+# Navigate to the project directory
+cd LoanApprovalPrediction
+````
+
+Install dependencies:
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn ydata-profiling
+```
+
+## Usage
+
+1. **Data Analysis**
+   Run `Data Analysis & Visualization/Data_Analysis.ipynb` to explore the raw dataset and generate train/test splits.
+
+2. **Preprocessing & Feature Engineering**
+   Run `Data PreProcessing and Feature Engineering/Data_PreProcessing.ipynb` to preprocess and transform data into clean datasets.
+
+3. **Model Development**
+   Run `Feature Selection and Model Development/Models.ipynb` to perform feature selection, train models, and evaluate results.
+
+4. **EDA Report**
+   Open `LoanApprovalPredictionEDA.html` for a comprehensive static report of the exploratory analysis.
+
+## Data Sources
+
+The dataset used in this project is sourced from Kaggle:
+📂 [Loan Approval Prediction Dataset](https://www.kaggle.com/datasets/architsharma01/loan-approval-prediction-dataset)
+
+Files include:
+
+* `loan_approval_dataset.csv` – Raw dataset containing applicant details and loan status.
+* `train_data.csv` – Training dataset.
+* `test_data.csv` – Testing dataset.
+* `preprocessed_train_data.csv` – Cleaned training dataset.
+* `preprocessed_test_data.csv` – Cleaned testing dataset.
+
+## Project Structure
 
 ```
 LoanApprovalPrediction/
 │
 ├── LoanApprovalPredictionEDA.html
+│
 ├── Data Analysis & Visualization/
 │   ├── Data_Analysis.ipynb
 │   ├── loan_approval_dataset.csv
@@ -28,144 +117,48 @@ LoanApprovalPrediction/
 └── README.md
 ```
 
-##  Components
-
-### 1. Data Analysis & Visualization
-
-- **Data_Analysis.ipynb**: Conducts exploratory data analysis using pandas, seaborn, and ydata-profiling. Includes data visualization, summary statistics, and pattern identification.
-- **loan_approval_dataset.csv**: Raw dataset containing 13 features and the target variable.
-- **train_data.csv / test_data.csv**: Training and testing datasets created from the raw data.
-- **LoanApprovalPredictionEDA.html**: Auto-generated comprehensive EDA report.
-
-### 2. Data Preprocessing & Feature Engineering
-
-- **Data_PreProcessing.ipynb**: Implements the preprocessing pipeline 
-- **preprocessed_train_data.csv / preprocessed_test_data.csv**: Cleaned and transformed datasets ready for modeling.
-
-### 3. Feature Selection & Model Development
-
-- **Models.ipynb**: Performs Feature Selection and Model Development and comparison between logistic Regression and decision trees
-
----
-
-##  Results Summary
+## Results & Visualizations
 
 ### Model Performance Comparison
 
-| Model | Feature Selection Method | CV Accuracy | Train Accuracy | Test Accuracy |
-|-------|--------------------------|-------------|----------------|---------------|
-| **Logistic Regression** | Manual Features | 94.22% | 94.39% | 92.62% |
-| **Logistic Regression** | SelectKBest | 94.27% | 94.32% | 93.33% |
-| **Logistic Regression** | RFE Features | 94.34% | 94.41% | 93.33% |
-| **Logistic Regression** | All Features | 94.25% | 94.48% | 93.09% |
-| **Decision Tree** | Manual Features | 99.67% | 99.74% | 100.00% |
-| **Decision Tree** | SelectKBest | 99.67% | 99.74% | 100.00% |
-| **Decision Tree** | RFE Features | 99.67% | 99.74% | 100.00% |
-| **Decision Tree** | All Features | 99.67% | 99.74% | 100.00% |
+| Model               | Feature Selection Method | CV Accuracy | Train Accuracy | Test Accuracy |
+| ------------------- | ------------------------ | ----------- | -------------- | ------------- |
+| Logistic Regression | Manual Features          | 94.22%      | 94.39%         | 92.62%        |
+| Logistic Regression | SelectKBest              | 94.27%      | 94.32%         | 93.33%        |
+| Logistic Regression | RFE Features             | 94.34%      | 94.41%         | 93.33%        |
+| Logistic Regression | All Features             | 94.25%      | 94.48%         | 93.09%        |
+| Decision Tree       | Manual Features          | 99.67%      | 99.74%         | 100.00%       |
+| Decision Tree       | SelectKBest              | 99.67%      | 99.74%         | 100.00%       |
+| Decision Tree       | RFE Features             | 99.67%      | 99.74%         | 100.00%       |
+| Decision Tree       | All Features             | 99.67%      | 99.74%         | 100.00%       |
 
-### Model Performance Across Feature Sets
+### Performance Across Feature Sets
 
-<img width="1790" height="616" alt="image" src="https://github.com/user-attachments/assets/09879ebf-b263-4d9a-b155-487973eb232c" />
-
-This chart compares cross-validation, training, and test accuracy across models and feature sets. The Decision Tree achieves perfect scores across all metrics, while Logistic Regression demonstrates consistent but slightly lower performance.
+![Model Accuracy Comparison](https://github.com/user-attachments/assets/09879ebf-b263-4d9a-b155-487973eb232c)
 
 ### Classification Metrics for Class 1 (Approved)
 
-<img width="1390" height="590" alt="image" src="https://github.com/user-attachments/assets/5fc2a046-b77c-4d96-9e8d-e8c8615e1dfc" />
+![Classification Metrics](https://github.com/user-attachments/assets/5fc2a046-b77c-4d96-9e8d-e8c8615e1dfc)
 
-This grouped bar chart displays the precision, recall, and F1-score for approved loan predictions. Decision Tree shows perfect metrics across all feature sets, while Logistic Regression achieves strong but realistic performance with F1-scores between 0.90 and 0.91.
+**Insights:**
 
-### Detailed Performance Metrics
+* Decision Tree achieves perfect metrics across all feature sets.
+* Logistic Regression provides balanced results with F1-scores between 0.90–0.91.
 
-#### Logistic Regression Performance
-- **Best Parameters**: C=1, penalty='l1' (for most feature sets)
-- **Test Accuracy Range**: 92.62% - 93.33%
-- **Precision for Approved Loans**: 87-89%
-- **Recall for Approved Loans**: 93-94%
-- **F1-Score for Approved Loans**: 0.90-0.91
+## Key Findings
 
-#### Decision Tree Performance
-- **Best Parameters**: ccp_alpha=0, max_depth=3, min_samples_leaf=20, min_samples_split=50
-- **Test Accuracy**: Perfect 100% across all feature sets
-- **All Metrics**: Perfect scores (1.00) for precision, recall, and F1-score
+1. **Decision Tree Overfitting**: Perfect scores across all sets suggest overfitting or possible data leakage.
+2. **Logistic Regression Reliability**: More realistic and generalizable with \~93% accuracy and strong precision/recall balance.
+3. **Feature Selection**: RFE (Recursive Feature Elimination) slightly outperforms other methods, simplifying models without performance loss.
+4. **Robustness**: Both models perform consistently across feature selection techniques.
 
----
+## Requirements
 
-##  Key Findings
-
-1. **Decision Tree Overfitting**: The Decision Tree model achieves perfect accuracy on both training and test sets, which suggests potential overfitting or data leakage that requires further investigation.
-
-2. **Logistic Regression Reliability**: Logistic Regression provides more realistic and generalizable results with test accuracy around 93% and balanced performance across metrics.
-
-3. **Feature Selection Effectiveness**: RFE (Recursive Feature Elimination) performed slightly better than manual selection, maintaining predictive power while reducing model complexity.
-
-4. **Model Consistency**: Both models showed consistent performance across different feature selection methods, indicating robustness in the feature engineering process.
-
----
-
-##  How to Run
-
-1. **Data Analysis**
-   Open and run `Data Analysis & Visualization/Data_Analysis.ipynb` to explore the data and generate train/test splits.
-
-2. **Preprocessing & Feature Engineering**
-   Run `Data PreProcessing and Feature Engineering/Data_PreProcessing.ipynb` to preprocess the data and create new features. This will output preprocessed CSVs.
-
-3. **Model Development**
-   Run `Feature Selection and Model Development/Models.ipynb` to perform feature selection, train models, and visualize results.
-
----
-
-##  Requirements
-
-- Python 3.x
-- pandas, numpy, matplotlib, seaborn, scikit-learn, imbalanced-learn, ydata-profiling
-
-Install dependencies with:
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn ydata-profiling
-```
-
----
-
-##  Performance Details
-
-### Logistic Regression Results
-
-**Manual Features:**
-- Best Params: {'C': 0.1, 'penalty': 'l1'}
-- CV Score: 94.22%
-- Train Score: 94.39%
-- Test Score: 92.62%
-
-**SelectKBest Features:**
-- Best Params: {'C': 1, 'penalty': 'l1'}
-- CV Score: 94.27%
-- Train Score: 94.32%
-- Test Score: 93.33%
-
-**RFE Features:**
-- Best Params: {'C': 1, 'penalty': 'l1'}
-- CV Score: 94.34%
-- Train Score: 94.41%
-- Test Score: 93.33%
-
-**All Features:**
-- Best Params: {'C': 1, 'penalty': 'l1'}
-- CV Score: 94.25%
-- Train Score: 94.48%
-- Test Score: 93.09%
-
-### Decision Tree Results
-
-All feature selection methods achieved identical optimal performance:
-- Best Params: {'ccp_alpha': 0, 'max_depth': 3, 'min_samples_leaf': 20, 'min_samples_split': 50}
-- CV Score: 99.67%
-- Train Score: 99.74%
-- Test Score: 100.00%
-
----
+* Python 3.x
+* pandas, numpy, matplotlib, seaborn
+* scikit-learn, imbalanced-learn, ydata-profiling
 
 ## 🎯 Conclusion
 
-Based on a comprehensive evaluation, Logistic Regression emerges as the superior choice for loan approval prediction, delivering reliable 93% accuracy with strong generalization capabilities, while the Decision Tree's perfect 100% performance indicates concerning overfitting that undermines its real-world credibility. The Logistic Regression model provides the optimal balance of predictive accuracy, interpretability, and trustworthiness required for financial decision-making systems.
+While the Decision Tree classifier achieves perfect scores, its results indicate **overfitting and reduced real-world applicability**. Logistic Regression, on the other hand, demonstrates **reliable generalization, interpretability, and robust performance** with \~93% test accuracy.
+
