@@ -123,34 +123,38 @@ LoanApprovalPrediction/
 
 | Model               | Feature Selection Method | CV Accuracy | Train Accuracy | Test Accuracy |
 | ------------------- | ------------------------ | ----------- | -------------- | ------------- |
-| Logistic Regression | Manual Features          | 94.22%      | 94.39%         | 92.62%        |
-| Logistic Regression | SelectKBest              | 94.27%      | 94.32%         | 93.33%        |
-| Logistic Regression | RFE Features             | 94.34%      | 94.41%         | 93.33%        |
+| Logistic Regression | Manual Features          | 94.22%      | 94.39%         | 92.51%        |
+| Logistic Regression | SelectKBest              | 94.29%      | 94.32%         | 93.21%        |
+| Logistic Regression | RFE Features             | 94.41%      | 94.36%         | 93.21%        |
 | Logistic Regression | All Features             | 94.25%      | 94.48%         | 93.09%        |
-| Decision Tree       | Manual Features          | 99.67%      | 99.74%         | 100.00%       |
-| Decision Tree       | SelectKBest              | 99.67%      | 99.74%         | 100.00%       |
-| Decision Tree       | RFE Features             | 99.67%      | 99.74%         | 100.00%       |
-| Decision Tree       | All Features             | 99.67%      | 99.74%         | 100.00%       |
+| Decision Tree       | Manual Features          | 78.09%      | 72.50%         | 70.14%        |
+| Decision Tree       | SelectKBest              | 86.42%      | 90.90%         | 91.57%        |
+| Decision Tree       | RFE Features             | 96.46%      | 95.77%         | 95.90%        |
+| Decision Tree       | All Features             | 99.17%      | 99.15%         | 99.29%        |
 
 ### Performance Across Feature Sets
 
-![Model Accuracy Comparison](https://github.com/user-attachments/assets/09879ebf-b263-4d9a-b155-487973eb232c)
+<img width="1392" height="430" alt="image" src="https://github.com/user-attachments/assets/bc639301-9cd5-44e3-947d-9faef9fa8f14" />
 
 ### Classification Metrics for Class 1 (Approved)
 
-![Classification Metrics](https://github.com/user-attachments/assets/5fc2a046-b77c-4d96-9e8d-e8c8615e1dfc)
+<img width="1375" height="208" alt="image" src="https://github.com/user-attachments/assets/7a93c1e4-40c2-4a9f-b874-88aa0e6a7be4" />
 
 **Insights:**
 
-* Decision Tree achieves perfect metrics across all feature sets.
-* Logistic Regression provides balanced results with F1-scores between 0.90–0.91.
+* Logistic Regression shows **consistent \~93% accuracy** with balanced precision and recall.
+* Decision Tree performance varies significantly:
+
+  * With manual features, it underperforms (\~70%).
+  * With SelectKBest or RFE, it improves drastically (91–96%).
+  * With all features, it achieves **near-perfect 99% accuracy**, though this could indicate **overfitting**.
 
 ## Key Findings
 
-1. **Decision Tree Overfitting**: Perfect scores across all sets suggest overfitting or possible data leakage.
-2. **Logistic Regression Reliability**: More realistic and generalizable with \~93% accuracy and strong precision/recall balance.
-3. **Feature Selection**: RFE (Recursive Feature Elimination) slightly outperforms other methods, simplifying models without performance loss.
-4. **Robustness**: Both models perform consistently across feature selection techniques.
+1. **Decision Tree Variability**: Performance ranges widely depending on feature selection, from 70% to 99% accuracy.
+2. **Logistic Regression Stability**: Provides consistently reliable results with \~93% accuracy and balanced classification metrics.
+3. **Feature Selection Impact**: RFE boosts both Logistic Regression and Decision Tree performance without unnecessary complexity.
+4. **Possible Overfitting**: The Decision Tree with all features may not generalize well despite its near-perfect results.
 
 ## Requirements
 
@@ -160,5 +164,10 @@ LoanApprovalPrediction/
 
 ## 🎯 Conclusion
 
-While the Decision Tree classifier achieves perfect scores, its results indicate **overfitting and reduced real-world applicability**. Logistic Regression, on the other hand, demonstrates **reliable generalization, interpretability, and robust performance** with \~93% test accuracy.
+The updated results reveal that:
 
+* **Logistic Regression** remains the **most reliable model** for generalization, achieving \~93% accuracy with strong precision and recall across all feature sets.
+* **Decision Trees** show **inconsistent behavior**: while they can reach up to **99% accuracy with all features**, this suggests **overfitting** and reduced real-world robustness.
+* **Best Trade-off**: Logistic Regression with RFE or SelectKBest features offers an excellent balance of performance and interpretability.
+
+👉 **Final Recommendation**: Use **Logistic Regression with RFE features** for deployment in real-world loan approval systems.
